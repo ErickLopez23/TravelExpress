@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "NNdbIf2OYCPCQ2wtlnjvDWEdxmxl2w/iZNnsWOZaHOBgVJNsDfxfD7sJjNnxVINCqzuTECK7EshWZtMbWkyJ7w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\KIKE\\Desktop\\TravelExpress\\Domain\\Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\KIKE\\.nuget\\packages\\erroror\\1.2.1\\erroror.1.2.1.nupkg.sha512",
+    "C:\\Users\\KIKE\\.nuget\\packages\\mediatr\\12.0.1\\mediatr.12.0.1.nupkg.sha512",
+    "C:\\Users\\KIKE\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\KIKE\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
