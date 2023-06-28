@@ -18,6 +18,7 @@ internal sealed class GetAllAttractionsQueryHandler : IRequestHandler<GetAllAttr
     {
         IReadOnlyList<Attraction> attractions = await _attractionRepository.GetAllAsync();
 
+
         return attractions
             .Select(a => new AttractionResponse(
                 a.Id.Value, 

@@ -1,5 +1,6 @@
 ﻿using Application.Data;
 using Domain.Attractions;
+using Domain.Plans;
 using Domain.Primitives;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,8 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWor
 {
     private readonly IPublisher _publisher;
     public DbSet<Attraction> Attractions { get; set; }
+    public DbSet<Plan> Plans { get; set; }
+    public DbSet<PlanItem> PlanItems { get; set; }
 
     public ApplicationDbContext(DbContextOptions options, IPublisher publisher)
         : base(options)

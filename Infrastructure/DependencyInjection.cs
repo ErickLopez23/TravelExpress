@@ -1,5 +1,6 @@
 ﻿using Application.Data;
 using Domain.Attractions;
+using Domain.Plans;
 using Domain.Primitives;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.Repositories;
@@ -23,6 +24,8 @@ public static class DependencyInjection
             sp.GetRequiredService<ApplicationDbContext>());
 
         services.AddScoped<IAttractionRepository, AttractionRepository>();
+
+        services.AddScoped<IPlanRepository, PlanRepository>();
 
         return services;
     }

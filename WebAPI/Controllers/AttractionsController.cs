@@ -61,9 +61,9 @@ public class AttractionsController : ApiController
             return Problem(errors);
         }
 
-        var createAttractionResult = await _mediator.Send(command);
+        var updateAttractionResult = await _mediator.Send(command);
 
-        return createAttractionResult.Match(
+        return updateAttractionResult.Match(
             attraction => NoContent(),
             errors => Problem(errors));
     }
@@ -71,9 +71,9 @@ public class AttractionsController : ApiController
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> Remove(Guid id, [FromBody] DeleteAttractionCommand command)
     {
-        var createAttractionResult = await _mediator.Send(command);
+        var deleteAttractionResult = await _mediator.Send(command);
 
-        return createAttractionResult.Match(
+        return deleteAttractionResult.Match(
             attraction => NoContent(),
             errors => Problem(errors));
     }
