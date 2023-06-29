@@ -1,5 +1,4 @@
-﻿using Domain.Attractions;
-using Domain.Plans;
+﻿using Domain.Plans;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -18,8 +17,9 @@ public class PlanItemConfiguration : IEntityTypeConfiguration<PlanItem>
             .IsRequired();
 
         builder
-            .HasOne<Attraction>()
+            .HasOne(e => e.Attraction)
             .WithMany()
-            .HasForeignKey(x => x.AttractionId);
+            .HasForeignKey(pi => pi.AttractionId)
+            .IsRequired();
     }
 }

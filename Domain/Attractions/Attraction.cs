@@ -9,6 +9,11 @@ public sealed class Attraction : AggregateRoot
     public string Description { get; private set; }
     public string Country { get; private set; }
 
+    private Attraction()
+    {
+        
+    }
+
     public Attraction(AttractionId id, string name, string description, string country)
     {
         Id = id;

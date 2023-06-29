@@ -23,16 +23,16 @@ internal sealed class GetPlanByIdQueryHandler : IRequestHandler<GetPlanByIdQuery
 
         var items = plan.PlanItems.Select(x => new PlanItemReponse(
             x.Id.Value,
-            "",
-            ""))
+            x.Attraction.Name,
+            x.Attraction.Country))
             .ToList();
 
         return new PlanReponse(
             plan.Id.Value,
             plan.Name,
             plan.Description,
-            plan.Departure,
-            plan.Return,
+            plan.Departure.ToShortDateString(),
+            plan.Return.ToShortDateString(),
             plan.Price,
             items);
     }

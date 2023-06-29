@@ -1,5 +1,4 @@
 ﻿using Domain.Bookings;
-using Domain.Plans;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -15,11 +14,6 @@ public class BookingConfiguration : IEntityTypeConfiguration<Booking>
             .HasConversion(
                 id => id.Value,
                 value => new BookingId(value));
-
-        builder
-            .HasOne<Plan>()
-            .WithMany()
-            .HasForeignKey(x => x.PlanId);
 
         builder.OwnsOne(x => x.Customer, customerBuilder =>
         {
@@ -38,5 +32,11 @@ public class BookingConfiguration : IEntityTypeConfiguration<Booking>
                 .HasMaxLength(255)
                 .IsRequired();
         });
+
+        builder
+            .HasOne(b => b.Plan)
+            .WithMany()
+            .HasForeignKey(b => b.PlanId)
+            .IsRequired();
     }
 }

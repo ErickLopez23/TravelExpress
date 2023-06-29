@@ -5,5 +5,7 @@ public record BookingResponse(
     string CustomerName,
     string CustomerPhone,
     string CustomerEmail,
-    string PlanName
+    string PlanName,
+    string Departure,
+    string Return
 );

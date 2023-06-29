@@ -27,6 +27,8 @@ internal sealed class GetBookingByIdQueryHandler : IRequestHandler<GetBookingByI
             booking.Customer.Name,
             booking.Customer.Phone,
             booking.Customer.Email,
-            "");
+            booking.Plan.Name,
+            booking.Plan.Departure.ToShortDateString(),
+            booking.Plan.Return.ToShortDateString());
     }
 }
