@@ -1,5 +1,6 @@
 ﻿using Application.Data;
 using Domain.Attractions;
+using Domain.Bookings;
 using Domain.Plans;
 using Domain.Primitives;
 using MediatR;
@@ -13,6 +14,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWor
     public DbSet<Attraction> Attractions { get; set; }
     public DbSet<Plan> Plans { get; set; }
     public DbSet<PlanItem> PlanItems { get; set; }
+    public DbSet<Booking> Bookings { get; set; }
 
     public ApplicationDbContext(DbContextOptions options, IPublisher publisher)
         : base(options)

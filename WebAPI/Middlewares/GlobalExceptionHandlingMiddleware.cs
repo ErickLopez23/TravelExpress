@@ -30,7 +30,7 @@ public class GlobalExceptionHandlingMiddleware : IMiddleware
                 Status = (int)HttpStatusCode.InternalServerError,
                 Type = "Server Error",
                 Title = "Server Error",
-                Detail = "An internal error server has ocurred"
+                Detail = ex.Message
             };
 
             string json = JsonSerializer.Serialize(problemDetails);

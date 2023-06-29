@@ -1,5 +1,6 @@
 ﻿using Application.Data;
 using Domain.Attractions;
+using Domain.Bookings;
 using Domain.Plans;
 using Domain.Primitives;
 using Infrastructure.Persistence;
@@ -26,6 +27,8 @@ public static class DependencyInjection
         services.AddScoped<IAttractionRepository, AttractionRepository>();
 
         services.AddScoped<IPlanRepository, PlanRepository>();
+
+        services.AddScoped<IBookingRepository, BookingRepository>();
 
         return services;
     }

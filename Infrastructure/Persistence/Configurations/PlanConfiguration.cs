@@ -25,11 +25,11 @@ public class PlanConfiguration : IEntityTypeConfiguration<Plan>
             .IsRequired();
 
         builder.Property(x => x.Departure)
-            .HasColumnType("datetime")
+            .HasColumnType("date")
             .IsRequired();
 
         builder.Property(x => x.Return)
-            .HasColumnType("datetime")
+            .HasColumnType("date")
             .IsRequired();
 
         builder.Property(x => x.Price)
