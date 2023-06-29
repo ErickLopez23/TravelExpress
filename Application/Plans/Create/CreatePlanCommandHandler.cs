@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Application.Plans.Create;
 
-internal sealed class CreatePlanCommandHandler : IRequestHandler<CreatePlanCommand, ErrorOr<Unit>>
+public sealed class CreatePlanCommandHandler : IRequestHandler<CreatePlanCommand, ErrorOr<Unit>>
 {
     private readonly IPlanRepository _planRepository;
     private readonly IUnitOfWork _unitOfWork;

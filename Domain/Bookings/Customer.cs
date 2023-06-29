@@ -15,7 +15,7 @@ public partial record Customer
 
     public static Customer? Create(string name, string phone, string email)
     {
-        if (string.IsNullOrEmpty(name))
+        if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(phone) || string.IsNullOrEmpty(email))
         {
             return null;
         }

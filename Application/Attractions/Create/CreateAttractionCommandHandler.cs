@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Application.Attractions.Create;
 
-internal sealed class CreateAttractionCommandHandler : IRequestHandler<CreateAttractionCommand, ErrorOr<Unit>>
+public sealed class CreateAttractionCommandHandler : IRequestHandler<CreateAttractionCommand, ErrorOr<Unit>>
 {
     private readonly IAttractionRepository _attractionRepository;
     private readonly IUnitOfWork _unitOfWork;
@@ -20,6 +20,10 @@ internal sealed class CreateAttractionCommandHandler : IRequestHandler<CreateAtt
     {
         if (string.IsNullOrEmpty(request.Name))
             return Error.Validation("AttractionName.Validation", "Attraction name is invalid");
+
+        if (string.IsNullOrEmpty(request.Country))
+            return Error.Validation("AttractionCountry.Validation", "Attraction country is invalid");
+
 
         var attraction = new Attraction(
             new AttractionId(Guid.NewGuid()),

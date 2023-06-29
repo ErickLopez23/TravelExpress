@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Application.Bookings.Create;
 
-internal sealed class CreateBookingCommandHandler : IRequestHandler<CreateBookingCommand, ErrorOr<Unit>>
+public sealed class CreateBookingCommandHandler : IRequestHandler<CreateBookingCommand, ErrorOr<Unit>>
 {
     private readonly IBookingRepository _bookingRepository;
     private readonly IUnitOfWork _unitOfWork;
@@ -20,7 +20,7 @@ internal sealed class CreateBookingCommandHandler : IRequestHandler<CreateBookin
     public async Task<ErrorOr<Unit>> Handle(CreateBookingCommand request, CancellationToken cancellationToken)
     {
         if (Customer.Create(request.CustomerName, request.CustomerPhone, request.CustomerEmail) is not Customer customer)
-            return Error.Validation("Error", "Oops! customer is not valid");
+            return Error.Validation("CreateCustomerError.Validation", "Oops! customer is not valid");
 
         var booking = new Booking(
             new BookingId(Guid.NewGuid()),
