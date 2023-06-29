@@ -21,11 +21,13 @@ public class PlanRepository : IPlanRepository
     public async Task<IReadOnlyList<Plan>> GetAllAsync() =>
         await _context.Plans
             .Include(x => x.PlanItems)
+            .ThenInclude(pi => pi.Attraction)
             .ToListAsync();
 
     public async Task<Plan?> GetByIdAsync(PlanId id) =>
         await _context.Plans
             .Include(x => x.PlanItems)
+            .ThenInclude(pi => pi.Attraction)
             .SingleOrDefaultAsync(x => x.Id == id);
 
     public async Task<PlanItem?> GetPlanItemByIdAsync(PlanItemId id) =>

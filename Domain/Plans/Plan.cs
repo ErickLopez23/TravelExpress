@@ -12,8 +12,12 @@ public sealed class Plan : AggregateRoot
     public decimal Price { get; private set; }
 
     private readonly List<PlanItem> _planItems = new();
+    public IReadOnlyList<PlanItem> PlanItems => _planItems.ToList();
 
-    public IReadOnlyList<PlanItem> PlanItems => _planItems;
+    private Plan()
+    {
+        
+    }
 
     public Plan(PlanId id, string name, string description, DateTime departure, DateTime @return, decimal price)
     {

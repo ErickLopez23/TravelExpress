@@ -4,8 +4,8 @@ public record PlanReponse(
     Guid Id,
     string Name,
     string Description,
-    DateTime Departure,
-    DateTime Return,
+    string Departure,
+    string Return,
     decimal Price,
     List<PlanItemReponse> PlanItems
 );

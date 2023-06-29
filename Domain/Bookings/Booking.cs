@@ -6,8 +6,10 @@ namespace Domain.Bookings;
 public sealed class Booking : AggregateRoot
 {
     public BookingId Id { get; private set; }
-    public PlanId PlanId { get; private set; }
     public Customer Customer { get; private set; }
+
+    public PlanId PlanId { get; private set; }
+    public Plan Plan { get; set; }
 
     private Booking()
     {

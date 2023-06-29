@@ -22,15 +22,15 @@ internal sealed class GetAllPlansQueryHandler : IRequestHandler<GetAllPlansQuery
             x.Id.Value,
             x.Name,
             x.Description,
-            x.Departure,
-            x.Return,
+            x.Departure.ToShortDateString(),
+            x.Return.ToShortDateString(),
             x.Price,
             x.PlanItems
                 .Select(pi =>
                     new PlanItemReponse(
                         pi.Id.Value,
-                        "",
-                        ""))
+                        pi.Attraction.Name,
+                        pi.Attraction.Country))
                 .ToList()
             ))
             .ToList();

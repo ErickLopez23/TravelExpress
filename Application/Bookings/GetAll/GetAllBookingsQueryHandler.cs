@@ -23,7 +23,10 @@ internal sealed class GetAllBookingsQueryHandler : IRequestHandler<GetAllBooking
                 b.Id.Value,
                 b.Customer.Name,
                 b.Customer.Phone,
-                b.Customer.Email, ""))
+                b.Customer.Email,
+                b.Plan.Name,
+                b.Plan.Departure.ToShortDateString(),
+                b.Plan.Return.ToShortDateString()))
             .ToList();
     }
 }

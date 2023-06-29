@@ -37,8 +37,9 @@ public class PlanConfiguration : IEntityTypeConfiguration<Plan>
             .IsRequired();
 
         builder
-            .HasMany(x => x.PlanItems)
+            .HasMany(e => e.PlanItems)
             .WithOne()
-            .HasForeignKey(x => x.PlanId);
+            .HasForeignKey(pi => pi.PlanId)
+            .IsRequired();
     }
 }

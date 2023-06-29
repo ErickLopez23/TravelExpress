@@ -17,9 +17,11 @@ public class BookingRepository : IBookingRepository
 
     public async Task<IReadOnlyList<Booking>> GetAllAsync() =>
         await _context.Bookings
+            .Include(b => b.Plan)
             .ToListAsync();
 
     public async Task<Booking?> GetByIdAsync(BookingId id) =>
         await _context.Bookings
+            .Include(b => b.Plan)
             .SingleOrDefaultAsync(a => a.Id == id);
 }

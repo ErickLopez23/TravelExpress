@@ -113,7 +113,7 @@ namespace Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Domain.Bookings.Booking", b =>
                 {
-                    b.HasOne("Domain.Plans.Plan", null)
+                    b.HasOne("Domain.Plans.Plan", "Plan")
                         .WithMany()
                         .HasForeignKey("PlanId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -149,11 +149,13 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.Navigation("Customer")
                         .IsRequired();
+
+                    b.Navigation("Plan");
                 });
 
             modelBuilder.Entity("Domain.Plans.PlanItem", b =>
                 {
-                    b.HasOne("Domain.Attractions.Attraction", null)
+                    b.HasOne("Domain.Attractions.Attraction", "Attraction")
                         .WithMany()
                         .HasForeignKey("AttractionId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -164,6 +166,8 @@ namespace Infrastructure.Persistence.Migrations
                         .HasForeignKey("PlanId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Attraction");
                 });
 
             modelBuilder.Entity("Domain.Plans.Plan", b =>
