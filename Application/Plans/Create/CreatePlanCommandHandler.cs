@@ -37,7 +37,8 @@ public sealed class CreatePlanCommandHandler : IRequestHandler<CreatePlanCommand
             var item = new PlanItem(
                 new PlanItemId(Guid.NewGuid()),
                 plan.Id,
-                new AttractionId(planItem.AttractionId));
+                //new AttractionId(planItem.AttractionId));
+                new AttractionId(planItem));
 
             plan.AddPlanItem(item);
         }

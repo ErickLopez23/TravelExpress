@@ -9,8 +9,5 @@ public record CreatePlanCommand(
     DateTime Departure,
     DateTime Return,
     decimal Price,
-    List<PlanItemDto> PlanItems
+    List<Guid> PlanItems
 ) : IRequest<ErrorOr<Unit>>;
-
-public record PlanItemDto(
-    Guid AttractionId);
