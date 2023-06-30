@@ -1,6 +1,7 @@
 ﻿using Application.Plans.AddPlanItem;
 using Application.Plans.Create;
 using Application.Plans.Delete;
+using Application.Plans.Get;
 using Application.Plans.GetAll;
 using Application.Plans.GetById;
 using Application.Plans.RemovePlanItem;
@@ -19,6 +20,18 @@ namespace WebAPI.Controllers
         public PlansController(ISender mediator)
         {
             _mediator = mediator;
+        }
+
+        [HttpGet("search")]
+        public async Task<IActionResult> Get(DateTime? departure, DateTime? @return, decimal? startPrice, decimal? endPrice, string? country)
+        {
+            var query = new GetPlansQuery(departure, @return, startPrice, endPrice, country);
+
+            var planResult = await _mediator.Send(query);
+
+            return planResult.Match(
+               plans => Ok(plans),
+               errors => Problem(errors));
         }
 
         [HttpGet]

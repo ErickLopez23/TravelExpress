@@ -7,7 +7,7 @@ public record PlanReponse(
     string Departure,
     string Return,
     decimal Price,
-    List<PlanItemReponse> PlanItems
+    IReadOnlyList<PlanItemReponse> PlanItems
 );
 
 public record PlanItemReponse(

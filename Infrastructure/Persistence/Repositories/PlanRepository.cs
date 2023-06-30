@@ -15,8 +15,39 @@ public class PlanRepository : IPlanRepository
     public void Add(Plan plan) =>
         _context.Plans.Add(plan);
 
-    public void AddPlanItem(PlanItem planItem) => 
+    public void AddPlanItem(PlanItem planItem) =>
         _context.PlanItems.Add(planItem);
+
+    public async Task<IReadOnlyList<Plan>> Get(DateTime? departure, DateTime? @return, decimal? startPrice, decimal? endPrice, string? country)
+    {
+        IQueryable<Plan> plansQueryable = _context.Plans
+            .Include(x => x.PlanItems)
+            .ThenInclude(pi => pi.Attraction);
+
+        if (departure is not null && @return is not null)
+        {
+            plansQueryable = plansQueryable
+                .Where(p => p.Departure >= departure && p.Return <= @return);
+        }
+
+        if (startPrice is not null && endPrice is not null)
+        {
+            plansQueryable = plansQueryable
+                .Where(p => p.Price >= startPrice && p.Price <= endPrice);
+        }
+
+        if (!string.IsNullOrEmpty(country))
+        {
+            plansQueryable = plansQueryable
+                .Where(p =>
+                    p.PlanItems
+                        .Where(pi => pi.Attraction.Country.Contains(country))
+                        .Any()
+                );
+        }
+
+        return await plansQueryable.ToListAsync();
+    }
 
     public async Task<IReadOnlyList<Plan>> GetAllAsync() =>
         await _context.Plans

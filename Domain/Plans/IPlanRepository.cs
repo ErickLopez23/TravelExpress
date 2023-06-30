@@ -2,6 +2,7 @@
 
 public interface IPlanRepository
 {
+    Task<IReadOnlyList<Plan>> Get(DateTime? departure, DateTime? @return, decimal? startPrice, decimal? endPrice, string? country);
     Task<IReadOnlyList<Plan>> GetAllAsync();
     Task<Plan?> GetByIdAsync(PlanId id);
     void Add(Plan plan);
