@@ -28,7 +28,7 @@ namespace Application.Plans.UnitTests.Create
                 "Something",
                 new DateTime(2023, 7, 1),
                 new DateTime(2023, 6, 20),
-                0, new List<PlanItemDto>());
+                0, new List<Guid>());
 
             // act
 
